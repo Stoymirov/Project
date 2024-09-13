@@ -1,0 +1,26 @@
+﻿
+@model Project.Data.BgQuestion
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Quiz</title>
+</head>
+<body>
+<h1>@Model.Text</h1>
+<form asp-action="CheckAnswer" method="post">
+	@foreach (var option in Model.Options)
+	{
+		<div>
+			<input type="radio" id="@option" name="selectedOption" value="@option" />
+			<label for="@option">@option</label>
+		</div>
+	}
+	<input type="hidden" name="correctOption" value="@Model.CorrectOption" />
+	<button type="submit">Submit</button>
+</form>
+<div>
+	<p>@ViewBag.Message</p>
+</div>
+</body>
+</html>
